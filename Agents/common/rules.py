@@ -1,10 +1,9 @@
-from common.LoggerSingleton import LoggerSingleton
+from Common.LoggerSingleton import LoggerSingleton
 
 
 class Rules:
 
-    def __init__(self, states: list, actions: list, hashfunction = None):
-        self.hashfunction = hashfunction
+    def __init__(self, states: list, actions: list):
         if len(states) != len(actions):
             LoggerSingleton.log(f"Number of states: {len(states)}\t Number of actions {len(actions)}")
             raise Exception("There's not a direct match between state and actions!")

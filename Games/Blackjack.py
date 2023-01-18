@@ -1,12 +1,12 @@
-from Intelligent_Agents.Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
-from Intelligent_Agents.common.Rules import Rules
-from common.LoggerSingleton import LoggerSingleton
 import random
+
+from Agents.Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
+from Agents.common.rules import Rules
+from Common.LoggerSingleton import LoggerSingleton
 
 
 class BlackjackRules(Rules):
     def __init__(self):
-
         def hit(current_amount):
             LoggerSingleton.log("Getting another card")
             new_amount = random.randint(1, 10)

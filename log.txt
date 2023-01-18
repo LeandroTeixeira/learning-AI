@@ -2,15 +2,18 @@ Rules successfully initialized
 Simple Reflex Agent BlackJackAgent successfully Initialized
 Rule for state Lower than 17 successfully recovered
 Getting another card
-Got a card that's worth 4
+Got a card that's worth 3
 Rule for state Lower than 17 successfully recovered
 Getting another card
 Got a card that's worth 2
 Rule for state Lower than 17 successfully recovered
 Getting another card
-Got a card that's worth 9
+Got a card that's worth 1
 Rule for state Lower than 17 successfully recovered
 Getting another card
-Got a card that's worth 4
-Rule for state Between 17 and 21 successfully recovered
-Stopping with 19
+Got a card that's worth 10
+Rule for state Lower than 17 successfully recovered
+Getting another card
+Got a card that's worth 7
+Rule for state Above 21 successfully recovered
+Busted with 23! I lost!

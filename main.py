@@ -1,5 +1,5 @@
-from common.LoggerSingleton import LoggerSingleton
-from games.Blackjack import blackjack
+from Common.LoggerSingleton import LoggerSingleton
+from Games.Blackjack import blackjack
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

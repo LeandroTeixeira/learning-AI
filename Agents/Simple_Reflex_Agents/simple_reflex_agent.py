@@ -1,5 +1,5 @@
-from Intelligent_Agents.common.Rules import Rules
-from common.LoggerSingleton import LoggerSingleton
+from Agents.common.rules import Rules
+from Common.LoggerSingleton import LoggerSingleton
 
 
 class SimpleReflexAgent:
