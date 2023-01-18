@@ -1,7 +1,7 @@
 import random
 
-from Agents.Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
-from Agents.common.rules import Rules
+from Agents.rules import Rules
+from Agents.simple_reflex_agent import SimpleReflexAgent
 from Common.LoggerSingleton import LoggerSingleton
 
 

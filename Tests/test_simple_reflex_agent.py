@@ -1,10 +1,34 @@
 import unittest
 
+from Agents.rules import Rules
+from Agents.simple_reflex_agent import SimpleReflexAgent
+from Common.LoggerSingleton import LoggerSingleton
+
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        pass
-    #   self.assertEqual(True, False)  # add assertion here
+    def setUp(self) -> None:
+        self.rules = ["Even", "Odd"]
+        self.actions = [lambda: "It's even", lambda: "It's odd"]
+        self.ruleset = Rules(self.rules, self.actions)
+        self.interpreter = lambda x: "Even" if x % 2 == 0 else "Odd"
+        self.test_cases = [i for i in range(0, 10)]
+
+    def test_initialization(self):
+        name = "Test_Agent"
+        agent = SimpleReflexAgent(self.ruleset, name, self.interpreter)
+        self.assertEqual(agent.rules, self.ruleset)
+        self.assertEqual(agent.name, name)
+        self.assertEqual(agent.perception_interpreter, self.interpreter)
+
+    def test_actions(self):
+        agent = SimpleReflexAgent(self.ruleset, "Test_Agent", self.interpreter)
+        for test in self.test_cases:
+            action = self.ruleset.get_action(self.interpreter(test))
+            agent_action = agent.act(test)
+            self.assertEqual(action, agent_action)
+
+    def tearDown(self) -> None:
+        LoggerSingleton.print()
 
 
 if __name__ == '__main__':

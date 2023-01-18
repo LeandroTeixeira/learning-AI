@@ -1,6 +1,6 @@
 import unittest
 
-from Agents.common.rules import Rules
+from Agents.rules import Rules
 from Common.LoggerSingleton import LoggerSingleton
 
 
