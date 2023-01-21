@@ -1,8 +1,8 @@
 import unittest
 
-from Agents.rules import Rules
-from Agents.simple_reflex_agent import SimpleReflexAgent
 from Common.LoggerSingleton import LoggerSingleton
+from Common.rules import Rules
+from Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
 
 
 class MyTestCase(unittest.TestCase):
@@ -28,7 +28,7 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(action, agent_action)
 
     def tearDown(self) -> None:
-        LoggerSingleton.print()
+        LoggerSingleton.print(console=False)
 
 
 if __name__ == '__main__':

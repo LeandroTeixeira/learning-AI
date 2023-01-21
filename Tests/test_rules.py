@@ -1,7 +1,7 @@
 import unittest
 
-from Agents.rules import Rules
 from Common.LoggerSingleton import LoggerSingleton
+from Common.rules import Rules
 
 
 class MyTestCase(unittest.TestCase):
@@ -11,6 +11,9 @@ class MyTestCase(unittest.TestCase):
         self.rule = Rules(self.states, self.actions)
 
     def test_initialization_success(self):
+        """
+        Test a successful initialization
+        """
         rules_dict = self.rule.rules
         keys = rules_dict.keys()
         values = rules_dict.values()
@@ -33,18 +36,18 @@ class MyTestCase(unittest.TestCase):
         self.assertRaises(Exception, too_many_values, msg="There's not a direct match between state and actions!")
         self.assertRaises(Exception, too_many_keys, msg="There's not a direct match between state and actions!")
 
-    def test_get_rule_success(self):
+    def test_get_rule_success(self) -> None:
         for key, value in zip(self.states, self.actions):
             self.assertEqual(self.rule.get_action(key), value)
 
-    def test_get_rule_failure(self):
+    def test_get_rule_failure(self) -> None:
         def get_wrong_rule():
             self.rule.get_action(-1)
 
         self.assertRaises(KeyError, get_wrong_rule)
 
     def tearDown(self) -> None:
-        LoggerSingleton.print()
+        LoggerSingleton.print(console=False)
 
 
 if __name__ == '__main__':

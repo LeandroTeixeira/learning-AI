@@ -10,10 +10,12 @@ class LoggerSingleton:
         return LoggerSingleton.__log
 
     @staticmethod
-    def print():
-        print(LoggerSingleton.__log)
-        with open('log.txt', 'w') as f:
-            f.write(LoggerSingleton.__log)
+    def print(console=True, save=True):
+        if console is True:
+            print(LoggerSingleton.__log)
+        if save is True:
+            with open('log.txt', 'w') as f:
+                f.write(LoggerSingleton.__log)
 
     @staticmethod
     def log(text):

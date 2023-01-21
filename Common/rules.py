@@ -14,6 +14,5 @@ class Rules:
 
     def get_action(self, state):
         rule = self.rules[state]
-        LoggerSingleton.log(f"Rule for state {state} successfully recovered")
         return rule
 

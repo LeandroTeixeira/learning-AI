@@ -1,28 +1,28 @@
 import random
 
-from Agents.rules import Rules
-from Agents.simple_reflex_agent import SimpleReflexAgent
 from Common.LoggerSingleton import LoggerSingleton
+from Common.rules import Rules
+from Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
 
 
 class BlackjackRules(Rules):
     def __init__(self):
         def hit(current_amount):
-            LoggerSingleton.log("Getting another card")
+            print("Getting another card")
             new_amount = random.randint(1, 10)
-            LoggerSingleton.log(f"Got a card that's worth {new_amount}")
+            print(f"Got a card that's worth {new_amount}")
             return current_amount + new_amount
 
         def stop(current_amount):
-            LoggerSingleton.log(f"Stopping with {current_amount}")
+            print(f"Stopping with {current_amount}")
             return current_amount
 
         def win(current_amount):
-            LoggerSingleton.log("Stopped with exactly 21!")
+            print("Stopped with exactly 21!")
             return current_amount
 
         def bust(current_amount):
-            LoggerSingleton.log(f"Busted with {current_amount}! I lost!")
+            print(f"Busted with {current_amount}! I lost!")
             return current_amount
 
         states = ["Lower than 17", "Between 17 and 21", "21", "Above 21"]
@@ -52,3 +52,12 @@ def blackjack():
         state = new_state
         action = s.act(state)
         new_state = action(state)
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    try:
+        blackjack()
+    finally:
+        LoggerSingleton.print(console=False)
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

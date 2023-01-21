@@ -1,5 +1,5 @@
-from Agents.rules import Rules
 from Common.LoggerSingleton import LoggerSingleton
+from Common.rules import Rules
 
 
 class SimpleReflexAgent:
@@ -11,7 +11,9 @@ class SimpleReflexAgent:
         LoggerSingleton.log(f"Simple Reflex Agent {name} successfully Initialized")
 
     def act(self, perception):
+        LoggerSingleton.log(f"Agent {self.name}: Received perception {perception}")
         state = self.perception_interpreter(perception)
-        return self.rules.get_action(state)
-
-
+        LoggerSingleton.log(f"Agent {self.name}: Corresponding state is {state}")
+        action = self.rules.get_action(state)
+        LoggerSingleton.log(f"Agent {self.name}: Retrieved function {action.__name__}")
+        return action
