@@ -10,7 +10,7 @@
 Este repositório contém implementações de técnicas de inteligência artificial e alguns casos de uso. Todo o código
 foi implementado em Python.
 
-## How to Use
+## Como Usar
 
 Exemplos devem ser executados em um terminal ou similar. Se precisar de ajuda,
 confira [este link](https://pt.wikihow.com/Executar-o-Arquivo-Python-no-Prompt-de-Comando-no-Windows)
