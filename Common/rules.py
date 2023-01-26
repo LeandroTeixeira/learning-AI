@@ -1,4 +1,4 @@
-from Common.LoggerSingleton import LoggerSingleton
+from Common.loggerSingleton import LoggerSingleton
 
 
 class Rules:

@@ -1,6 +1,6 @@
 import unittest
 
-from Common.LoggerSingleton import LoggerSingleton
+from Common.loggerSingleton import LoggerSingleton
 from Common.rules import Rules
 from Simple_Reflex_Agents.simple_reflex_agent import SimpleReflexAgent
 
