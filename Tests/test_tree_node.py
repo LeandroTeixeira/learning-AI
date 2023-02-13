@@ -54,6 +54,17 @@ class MyTestCase(unittest.TestCase):
 
                 current_node = current_node.children[0]
 
+    def test_ancestor(self):
+        current_node = self.node
+        for child in self.children:
+            current_node.add_child(child["value"], child["distance"])
+            current_node = current_node.children[0]
+        current_node.add_child("Tester")
+        current_node = current_node.children[0]
+        ancestors = [child["value"] for child in self.children]
+        ancestors.append(self.node.value)
+        self.assertCountEqual(current_node.get_ancestors(), ancestors)
+
     def tearDown(self) -> None:
         self.node.children = []
 
