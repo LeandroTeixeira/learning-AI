@@ -4,6 +4,7 @@ import unittest
 from Common.graph import Graph
 
 
+# TODO: Test cases with action variable
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.starting_cities = ["Belo Horizonte", "São Paulo", "Rio de Janeiro", "Brasilia", "Porto Alegre", "Curitiba"]

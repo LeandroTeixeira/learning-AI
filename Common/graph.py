@@ -1,6 +1,8 @@
 from Common.treeNode import TreeNode
 
 
+# TODO: Incorporate "action" variable inside graph
+
 class Graph:
     def __init__(self, vertices: list):
         self.graph = dict()
@@ -35,7 +37,6 @@ class Graph:
         return self.graph
 
     def to_graph(self, node=None):
-
         if node is None:
             keys = list(self.graph.keys())
             current_node = TreeNode(keys[0])
