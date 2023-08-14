@@ -1,13 +1,17 @@
 class TreeNode:
-    def __init__(self, value, parent=None, distance=0, action=None):
+    def __init__(self, value, parent=None, distance=0, action='Start at'):
         self.value = value
         self.parent = parent
         self.distance = distance
-        self.action = action
+        if parent is not None:
+            self.action = f"from {parent.value}, {action} {value}"
+        else:
+            self.action = f"{action} {value}"
+
         self.children = []
 
-    def add_child(self, value, distance=0, action="Travel to"):
-        self.children.append(TreeNode(value, self, distance, action + f" {value}"))
+    def add_child(self, value, distance=0, action="go to"):
+        self.children.append(TreeNode(value, self, distance, action))
 
     def add_child_node(self, child_node):
         self.children.append(child_node)

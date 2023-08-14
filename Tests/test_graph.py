@@ -1,6 +1,7 @@
 import random
 import unittest
 
+from Common.CONSTANTS import DEFAULT_NO_CONNECTION
 from Common.graph import Graph
 
 
@@ -8,7 +9,7 @@ from Common.graph import Graph
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.starting_cities = ["Belo Horizonte", "São Paulo", "Rio de Janeiro", "Brasilia", "Porto Alegre", "Curitiba"]
-        self.main_graph = Graph(self.starting_cities)
+        self.main_graph = Graph(self.starting_cities, DEFAULT_NO_CONNECTION)
 
     def test_graph_initialization(self):
         graph = self.main_graph.graph
@@ -19,7 +20,7 @@ class MyTestCase(unittest.TestCase):
         for city_1 in self.starting_cities:
             for city_2 in self.starting_cities:
                 value = self.main_graph[city_1][city_2]
-                self.assertEqual(value, 0)
+                self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_unidirectional_input(self):
         main_city = self.starting_cities[0]
@@ -33,7 +34,7 @@ class MyTestCase(unittest.TestCase):
                     if city_2 == main_city:
                         self.assertEqual(value, 1)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_unidirectional_input_different_value(self):
         main_city = self.starting_cities[0]
@@ -48,7 +49,7 @@ class MyTestCase(unittest.TestCase):
                     if city_2 == main_city:
                         self.assertEqual(value, expected_value)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_unidirectional_input_new_data(self):
         new_city_1 = "Salvador"
@@ -70,7 +71,7 @@ class MyTestCase(unittest.TestCase):
                     if city_1 == new_city_2 or city_2 == new_city_1:
                         self.assertEqual(value, 1)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_bidirectional_input_different_value(self):
         main_city = self.starting_cities[0]
@@ -86,7 +87,7 @@ class MyTestCase(unittest.TestCase):
                     if city_2 == main_city or city_1 == main_city:
                         self.assertEqual(value, expected_value)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_bidirectional_input(self):
         main_city = self.starting_cities[0]
@@ -102,7 +103,7 @@ class MyTestCase(unittest.TestCase):
                     if city_2 == main_city or city_1 == main_city:
                         self.assertEqual(value, expected_value)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_bidirectional_input_new_data(self):
         new_city_1 = "Salvador"
@@ -124,7 +125,7 @@ class MyTestCase(unittest.TestCase):
                     if city_1 == new_city_1 or city_1 == new_city_2 or city_2 == new_city_1 or city_2 == new_city_2:
                         self.assertEqual(value, 1)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_removal_unidirectional(self):
         populated_graph = Graph(self.starting_cities)
@@ -140,7 +141,7 @@ class MyTestCase(unittest.TestCase):
                     if city_2 == c1 and city_1 == c2:
                         self.assertEqual(value, 1)
                     else:
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
 
     def test_removal_bidirectional(self):
         populated_graph = Graph(self.starting_cities)
@@ -156,7 +157,7 @@ class MyTestCase(unittest.TestCase):
                 with self.subTest(name=f"C1: {city_1} C2: {city_2}"):
                     value = populated_graph[city_1][city_2]
                     if (city_2 == c1 and city_1 == c2) or (city_1 == c1 and city_2 == c2):
-                        self.assertEqual(value, 0)
+                        self.assertEqual(value, DEFAULT_NO_CONNECTION)
                     else:
                         self.assertEqual(value, 1)
 
@@ -180,7 +181,7 @@ class MyTestCase(unittest.TestCase):
         non_circular_graph.add_connection("Curitiba", "Porto Alegre", directed=True)
         non_circular_graph.add_connection("Curitiba", "São Paulo", directed=True)
 
-        tree = non_circular_graph.to_graph()
+        tree = non_circular_graph.to_tree()
         self.assertEqual(tree.value, "Belo Horizonte")
         self.assertCountEqual([child.value for child in tree.children], ["São Paulo", "Rio de Janeiro"])
 
@@ -233,7 +234,7 @@ class MyTestCase(unittest.TestCase):
         circular_graph.add_connection("Curitiba", "Porto Alegre", directed=True)
         circular_graph.add_connection("Curitiba", "Brasilia", directed=True)
 
-        tree = circular_graph.to_graph()
+        tree = circular_graph.to_tree()
         self.assertEqual(tree.value, "Belo Horizonte")
         self.assertCountEqual([child.value for child in tree.children], ["Curitiba", "Rio de Janeiro"])
 
