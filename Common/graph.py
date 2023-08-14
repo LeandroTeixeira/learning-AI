@@ -2,8 +2,6 @@ from Common.CONSTANTS import DEFAULT_NO_CONNECTION
 from Common.treeNode import TreeNode
 
 
-# TODO: Incorporate "action" variable inside graph
-
 class Graph:
     def __init__(self, vertices: list, default_connection=DEFAULT_NO_CONNECTION):
         self.default_connection = default_connection
