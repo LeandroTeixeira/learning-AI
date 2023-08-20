@@ -3,10 +3,7 @@ class TreeNode:
         self.value = value
         self.parent = parent
         self.distance = distance
-        if parent is not None:
-            self.action = f"from {parent.value}, {action} {value}"
-        else:
-            self.action = f"{action} {value}"
+        self.action = f"{action} {value}" if parent is None else f"from {parent.value}, {action} {value}"
 
         self.children = []
 
@@ -19,7 +16,7 @@ class TreeNode:
     def get_distance_from_root(self):
         distance = self.distance
         aux = self.parent
-        while aux is not None:
+        while aux:
             distance += aux.distance
             aux = aux.parent
         return distance
@@ -28,7 +25,7 @@ class TreeNode:
         aux = self.parent
         ancestors = []
 
-        while aux is not None:
+        while aux:
             ancestors.append(aux.value)
             aux = aux.parent
         return ancestors

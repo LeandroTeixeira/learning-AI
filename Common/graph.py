@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from Common.CONSTANTS import DEFAULT_NO_CONNECTION
 from Common.treeNode import TreeNode
 
@@ -5,44 +7,39 @@ from Common.treeNode import TreeNode
 class Graph:
     def __init__(self, vertices: list, default_connection=DEFAULT_NO_CONNECTION):
         self.default_connection = default_connection
-        self.graph = dict()
+        self.graph = defaultdict(dict)
         for vertice in vertices:
-            self.graph[vertice] = dict()
             for aux_vertice in vertices:
                 self.graph[vertice][aux_vertice] = self.default_connection
 
     def add_connection(self, src, target, value=1, directed=False):
-        if src not in self.graph.keys():
-            self.graph[src] = dict()
-            for key in self.graph.keys():
+        keys_list = list(self.graph.keys())
+        if src not in keys_list:
+            for key in keys_list:
                 self.graph[src][key] = self.default_connection
                 self.graph[key][src] = self.default_connection
 
-        if target not in self.graph.keys():
-            self.graph[target] = dict()
-            for key in self.graph.keys():
+        if target not in keys_list:
+            for key in keys_list:
                 self.graph[target][key] = self.default_connection
                 self.graph[key][target] = self.default_connection
 
         self.graph[src][target] = value
-        if directed is False:
+        if not directed:
             self.graph[target][src] = value
 
         return self.graph
 
     def remove_connection(self, src, target, directed=False):
         self.graph[src][target] = self.default_connection
-        if directed is False:
+        if not directed:
             self.graph[target][src] = self.default_connection
         return self.graph
 
     def to_tree(self, node=None, action="go to"):
         # User can specify that root of the tree. If they don't, it is predefined as the first key.
-        if node is None:
-            keys = list(self.graph.keys())
-            current_node = TreeNode(keys[0])
-        else:
-            current_node = node
+        keys = list(self.graph.keys())
+        current_node = node if node is not None else TreeNode(keys[0])
 
         # Add all the connected tiles as children
         current_key = current_node.value
