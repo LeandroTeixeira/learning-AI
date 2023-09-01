@@ -40,11 +40,21 @@ class Sentence:
         return set(self.truth_table) == set(other.truth_table)
 
     def __str__(self):
-        if self.n_operands == 1:
-            return self.symbol + "P"
-        str_repr = "P"
-        for i in range(1, self.n_operands):
-            str_repr += f" {self.symbol} {value_to_letter_representation(i)}"
+        if self.symbol in [True, False]:
+            return self.symbol
+
+        if len(self.values) > 0:
+            if self.n_operands == 1:
+                return self.symbol + self.values[0].symbol
+            str_repr = f"{self.values[0].symbol}"
+            for i in range(1, len(self.values)):
+                str_repr += f" {self.symbol} {self.values[i].symbol}"
+        else:
+            if self.n_operands == 1:
+                return self.symbol + "P"
+            str_repr = "P"
+            for i in range(1, self.n_operands):
+                str_repr += f" {self.symbol} {value_to_letter_representation(i)}"
         return str_repr
 
     def __call__(self, *args):

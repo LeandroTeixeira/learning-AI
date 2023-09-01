@@ -38,11 +38,23 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(self.not_expr == self.not_2_expr)
         self.assertFalse(self.not_expr == self.and_expr)
         self.assertFalse(self.and_expr == self.and_3_expr)
+
         self.assertEqual(str(self.or_expr), "P v Q")
         self.assertEqual(str(self.and_expr), "P ^ Q")
         self.assertEqual(str(self.and_3_expr), "P ^ Q ^ R")
         self.assertEqual(str(self.xor), "P Xor Q")
         self.assertEqual(str(self.xnor), "P Xnor Q")
+
+        sentence_1 = Sentence("I went to a concert", "A", values=[False])
+        sentence_2 = Sentence("I went to a football match", "B", values=[False])
+        or_2 = Sentence("Or", "v",
+                        {(a, b): a or b for a in [True, False] for b in [True, False]})
+        not_2 = Sentence("Not", "¬", {False: True, True: False})
+        self.assertEqual(str(or_2), "P v Q")
+        or_2.set(sentence_1, sentence_2)
+        self.assertEqual(str(or_2), "A v B")
+        not_2.set(sentence_1)
+        self.assertEqual(str(not_2), "¬A")
 
     def test_simple_eval_success(self):
         self.assertEqual(self.sentence_1(), False)
