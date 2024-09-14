@@ -1,7 +1,8 @@
 from Common.treeNode import TreeNode
 
 
-def simple_breadth_first_search(tree: TreeNode, value):
+# TODO: BFS for graphs
+def breadth_first_search_tree(tree: TreeNode, value):
     explored = []
     frontier = [tree]
     while len(frontier) > 0:

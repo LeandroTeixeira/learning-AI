@@ -1,0 +1,38 @@
+Rules successfully initialized
+Rules successfully initialized
+Rules successfully initialized
+Rules successfully initialized
+Rules successfully initialized
+Simple Reflex Agent Test_Agent successfully Initialized
+Agent Test_Agent: Received perception 0
+Agent Test_Agent: Corresponding state is Even
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 1
+Agent Test_Agent: Corresponding state is Odd
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 2
+Agent Test_Agent: Corresponding state is Even
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 3
+Agent Test_Agent: Corresponding state is Odd
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 4
+Agent Test_Agent: Corresponding state is Even
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 5
+Agent Test_Agent: Corresponding state is Odd
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 6
+Agent Test_Agent: Corresponding state is Even
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 7
+Agent Test_Agent: Corresponding state is Odd
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 8
+Agent Test_Agent: Corresponding state is Even
+Agent Test_Agent: Retrieved function <lambda>
+Agent Test_Agent: Received perception 9
+Agent Test_Agent: Corresponding state is Odd
+Agent Test_Agent: Retrieved function <lambda>
+Rules successfully initialized
+Simple Reflex Agent Test_Agent successfully Initialized

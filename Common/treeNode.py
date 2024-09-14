@@ -29,3 +29,24 @@ class TreeNode:
             ancestors.append(aux.value)
             aux = aux.parent
         return ancestors
+
+    def print(self, strategy="BFS"):
+        explored_values = []
+        frontier_values = []
+        frontier = [self]
+        while len(frontier) > 0:
+            if strategy == "BFS":
+                curr_element = frontier.pop(0)
+            if strategy == "DFS":
+                curr_element = frontier.pop()
+            explored_values.append(curr_element.value)
+            new_frontier = [child for child in curr_element.children if
+                            child.value not in explored_values and child.value not in frontier_values]
+            frontier.extend(new_frontier)
+            frontier_values.extend([node.value for node in new_frontier])
+
+            line = str(curr_element.value) + ": "
+
+            child_values = [str(child.value) for child in curr_element.children]
+            line += '\t'.join(child_values)
+            print(line)

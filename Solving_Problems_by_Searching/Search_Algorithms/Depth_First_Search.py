@@ -1,7 +1,8 @@
 from Common.treeNode import TreeNode
 
 
-def simple_depth_first_search(tree: TreeNode, value, explored=None):
+# TODO: DFS for graphs
+def depth_first_search_tree(tree: TreeNode, value):
     explored = []
     frontier = [tree]
 

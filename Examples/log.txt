@@ -1,0 +1,17 @@
+Rules successfully initialized
+Simple Reflex Agent BlackJackAgent successfully Initialized
+Agent BlackJackAgent: Received perception 0
+Agent BlackJackAgent: Corresponding state is Lower than 17
+Agent BlackJackAgent: Retrieved function hit
+Agent BlackJackAgent: Received perception 4
+Agent BlackJackAgent: Corresponding state is Lower than 17
+Agent BlackJackAgent: Retrieved function hit
+Agent BlackJackAgent: Received perception 9
+Agent BlackJackAgent: Corresponding state is Lower than 17
+Agent BlackJackAgent: Retrieved function hit
+Agent BlackJackAgent: Received perception 16
+Agent BlackJackAgent: Corresponding state is Lower than 17
+Agent BlackJackAgent: Retrieved function hit
+Agent BlackJackAgent: Received perception 24
+Agent BlackJackAgent: Corresponding state is Above 21
+Agent BlackJackAgent: Retrieved function bust
