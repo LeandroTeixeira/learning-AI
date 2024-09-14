@@ -1,7 +1,8 @@
 import unittest
 
 from Common.graph import Graph
-from Solving_Problems_by_Searching.Search_Algorithms.Depth_First_Search import depth_first_search_tree
+from Solving_Problems_by_Searching.Search_Algorithms.Depth_First_Search import depth_first_search_tree_iterative, \
+    depth_first_search_tree_recursive
 
 
 # TODO: Add tests for graph algorithm
@@ -60,14 +61,19 @@ class MyTestCase(unittest.TestCase):
 
         for i in range(0, 11):
             with self.subTest(name=f"DFS: {i}"):
-                path = ', '.join(depth_first_search_tree(self.test_tree, i))
+                path = ', '.join(depth_first_search_tree_iterative(self.test_tree, i))
+                self.assertEqual(answers[i], path)
+
+                path = ', '.join(depth_first_search_tree_recursive(self.test_tree, i))
                 self.assertEqual(answers[i], path)
 
     def test_dfs_tree_failure(self):
         value = 20
-        path = depth_first_search_tree(self.test_tree, value)
+        path = depth_first_search_tree_iterative(self.test_tree, value)
         self.assertIsNone(path, f"{value} is inside the tree and has the following path: {path}")
 
+        path = depth_first_search_tree_recursive(self.test_tree, value)
+        self.assertIsNone(path, f"{value} is inside the tree and has the following path: {path}")
 
 if __name__ == '__main__':
     unittest.main()

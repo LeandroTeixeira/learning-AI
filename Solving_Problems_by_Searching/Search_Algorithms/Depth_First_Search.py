@@ -3,7 +3,7 @@ from Common.treeNode import TreeNode
 
 
 # TODO: DFS for graphs
-def depth_first_search_tree(tree: TreeNode, value):
+def depth_first_search_tree_iterative(tree: TreeNode, value):
     explored = []
     frontier = [tree]
 
@@ -14,8 +14,23 @@ def depth_first_search_tree(tree: TreeNode, value):
 
         explored.append(current.value)
 
-        for child in reversed(current.children):
+        new_frontier = []
+        for child in current.children:
             if child.value not in explored and child not in frontier:
-                frontier.append(child)
+                new_frontier.insert(0, child)
+
+        frontier.extend(new_frontier)
+
+    return None
+
+
+def depth_first_search_tree_recursive(tree: TreeNode, value):
+    if tree.value == value:
+        return get_node_action_path(tree)
+
+    for child in tree.children:
+        return_value = depth_first_search_tree_iterative(child, value)
+        if return_value is not None:
+            return return_value
 
     return None

@@ -14,6 +14,8 @@ def breadth_first_search_tree(tree: TreeNode, value):
         explored.append(current.value)
 
         for child in current.children:
+            if child.value == value:
+                return get_node_action_path(child)
             if child.value not in explored and child not in frontier:
                 frontier.append(child)
 
