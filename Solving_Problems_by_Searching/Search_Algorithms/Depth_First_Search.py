@@ -1,4 +1,5 @@
 from Common.treeNode import TreeNode
+from Solving_Problems_by_Searching.Common import get_node_action_path
 
 
 # TODO: DFS for graphs
@@ -9,12 +10,7 @@ def depth_first_search_tree(tree: TreeNode, value):
     while len(frontier) > 0:
         current = frontier.pop(-1)
         if current.value == value:
-            aux = current
-            action_list = [aux.action]
-            while aux.parent is not None:
-                aux = aux.parent
-                action_list = [aux.action] + action_list
-            return action_list
+            return get_node_action_path(current)
 
         explored.append(current.value)
 
