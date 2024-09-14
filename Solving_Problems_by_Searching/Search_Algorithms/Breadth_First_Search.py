@@ -1,5 +1,5 @@
+from Common.Functions import get_node_action_path
 from Common.treeNode import TreeNode
-from Solving_Problems_by_Searching.Common import get_node_action_path
 
 
 # TODO: BFS for graphs
