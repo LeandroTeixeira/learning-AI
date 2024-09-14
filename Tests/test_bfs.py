@@ -4,6 +4,7 @@ from Common.graph import Graph
 from Solving_Problems_by_Searching.Search_Algorithms.Breadth_First_Search import breadth_first_search_tree
 
 
+# TODO: Add tests for graph algorithm
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.test_graph = Graph([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -48,7 +49,7 @@ class MyTestCase(unittest.TestCase):
         #  self.test_tree.children[2].add_child(9, 1)
         #  self.test_tree.children[2].children[0].add_child(10, 1)
 
-    def test_simple_search_success(self):
+    def test_bfs_tree_success(self):
         path = ', '.join(breadth_first_search_tree(self.test_tree, 0))
         self.assertEqual(path, "Start at 0")
         path = ', '.join(breadth_first_search_tree(self.test_tree, 1))
@@ -72,7 +73,7 @@ class MyTestCase(unittest.TestCase):
         path = ', '.join(breadth_first_search_tree(self.test_tree, 10))
         self.assertEqual(path, "Start at 0, from 0, go to 3, from 3, go to 8, from 8, go to 10")
 
-    def test_simple_search_failure(self):
+    def test_bfs_tree_failure(self):
         value = 20
         path = breadth_first_search_tree(self.test_tree, value)
         self.assertIsNone(path, f"{value} is inside the tree and has the following path: {path}")
