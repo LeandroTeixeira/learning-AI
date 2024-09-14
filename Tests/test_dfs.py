@@ -51,28 +51,17 @@ class MyTestCase(unittest.TestCase):
         #  self.test_tree.children[2].children[0].add_child(10, 1)
 
     def test_dfs_tree_success(self):
-        path = ', '.join(depth_first_search_tree(self.test_tree, 0))
-        self.assertEqual(path, "Start at 0")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 1))
-        self.assertEqual(path, "Start at 0, from 0, go to 1")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 2))
-        self.assertEqual(path, "Start at 0, from 0, go to 2")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 3))
-        self.assertEqual(path, "Start at 0, from 0, go to 3")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 4))
-        self.assertEqual(path, "Start at 0, from 0, go to 1, from 1, go to 4")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 5))
-        self.assertEqual(path, "Start at 0, from 0, go to 1, from 1, go to 5")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 6))
-        self.assertEqual(path, "Start at 0, from 0, go to 2, from 2, go to 6")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 7))
-        self.assertEqual(path, "Start at 0, from 0, go to 2, from 2, go to 7")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 8))
-        self.assertEqual(path, "Start at 0, from 0, go to 3, from 3, go to 8")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 9))
-        self.assertEqual(path, "Start at 0, from 0, go to 3, from 3, go to 9")
-        path = ', '.join(depth_first_search_tree(self.test_tree, 10))
-        self.assertEqual(path, "Start at 0, from 0, go to 3, from 3, go to 8, from 8, go to 10")
+        answers = ["Start at 0", "Start at 0, from 0, go to 1", "Start at 0, from 0, go to 2",
+                   "Start at 0, from 0, go to 3", "Start at 0, from 0, go to 1, from 1, go to 4",
+                   "Start at 0, from 0, go to 1, from 1, go to 5", "Start at 0, from 0, go to 2, from 2, go to 6",
+                   "Start at 0, from 0, go to 2, from 2, go to 7", "Start at 0, from 0, go to 3, from 3, go to 8",
+                   "Start at 0, from 0, go to 3, from 3, go to 9",
+                   "Start at 0, from 0, go to 3, from 3, go to 8, from 8, go to 10"]
+
+        for i in range(0, 11):
+            with self.subTest(name=f"DFS: {i}"):
+                path = ', '.join(depth_first_search_tree(self.test_tree, i))
+                self.assertEqual(answers[i], path)
 
     def test_dfs_tree_failure(self):
         value = 20
